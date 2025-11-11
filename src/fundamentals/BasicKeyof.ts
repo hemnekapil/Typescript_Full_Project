@@ -23,3 +23,22 @@ function logProperty<T>(obj: T, key: keyof T) {
 }
 
 logProperty(cfg, "baseUrl");
+type LocatorMap = {
+  loginButton: string;
+  userInput: string;
+  passwordInput: string;
+};
+
+const locators: LocatorMap = {
+  loginButton: "#login",
+  userInput: "#user",
+  passwordInput: "#pass",
+};
+//Helper that accepts only valid keys from locatermap
+function getSelector<M, K extends keyof M>(map: M, key: K): M[K] {
+  return map[key];
+}
+
+const sel = getSelector(locators, "userInput");
+
+console.log(sel);
