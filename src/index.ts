@@ -1,30 +1,36 @@
-function CalculatePrice(price: number, discount?: number): number {
-  return price - (discount || 0);
+// function createEmployee({ id }: { id: number }): {
+//   id: number;
+//   isActive: boolean;
+// } {
+//   return { id, isActive: id % 2 === 0 };
+// }
+
+// const first = createEmployee({ id: 1 });
+// const second = createEmployee({ id: 2 });
+// console.log(first, second);
+
+// function createStudent(student: { id: number; name: string }): void {
+//   console.log(`Welcome to the course ${student.name.toUpperCase()}!!!`);
+// }
+// const newStudent = {
+//   id: 5,
+//   name: "Kpie",
+// };
+// createStudent(newStudent);
+
+function processData(
+  input: string | number,
+  config: { reverse: boolean } = { reverse: false }
+): string | number {
+  if (typeof input === "number") {
+    return input * 2;
+  } else {
+    return config.reverse
+      ? input.toUpperCase().split("").reverse().join("")
+      : input.toUpperCase();
+  }
 }
-const priceAfterDiscount = CalculatePrice(500, 5);
 
-console.log(priceAfterDiscount);
-
-function calculateScore(
-  initialScore: number,
-  penaltyPoints: number = 2
-): number {
-  return initialScore - penaltyPoints;
-}
-
-const scoreAfterPenaltiy = calculateScore(100, 20);
-const scoreWithPenalty = calculateScore(300);
-console.log(scoreAfterPenaltiy);
-console.log(scoreWithPenalty);
-
-function sum(message: string, ...numbers: number[]): string {
-  const doubled = numbers.map((num) => num * 2);
-  console.log(doubled);
-  const total = numbers.reduce((previous, current) => {
-    return previous + current;
-  }, 0);
-  return `${message}${total}`;
-}
-
-let result1 = sum("The total is:", 1, 2, 3, 4, 5);
-console.log(result1);
+console.log(processData(10));
+console.log(processData("Hello"));
+console.log(processData("Hello", { reverse: true }));
